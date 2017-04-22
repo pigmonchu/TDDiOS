@@ -65,10 +65,30 @@ class MoneyCalculatorTests: XCTestCase {
         let fixQOperation = fixQ.times(3)
 
         XCTAssertEqual(firstOperation, fixQ) // 1.6666666666666 == 1.67
-        XCTAssertNotEqual(secondOperation, fixQOperation) // 5 != 5.1
+        XCTAssertNotEqual(secondOperation, fixQOperation) // 5 != 5.01
         
     }
 
-    
+    func testThatObjectWithEqualHashAreEqual() {
+//Es el mismo test que arriba, pero lo mantengo por si cambio la implementación que pete
+        let fixQ = Euro(1.67)
+        
+        let firstOperation = five.times(1/3)
+        let secondOperation = five.times(3)
+        
+        let fixQOperation = fixQ.times(3)
+        
+        XCTAssertEqual(firstOperation.hashValue, fixQ.hashValue) // 167 == 167
+        XCTAssertNotEqual(secondOperation.hashValue, fixQOperation.hashValue) // 500 != 501
+        
+    }
 
+    func testThatHashValueIsWellFormed() {
+        let fixQ = Euro(50)
+        let otherFive = Euro(5)
+        
+        XCTAssertEqual(five.hashValue, otherFive.hashValue)
+        XCTAssertNotEqual(fixQ.hashValue, otherFive.hashValue)
+    }
+    
 }
