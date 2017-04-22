@@ -90,5 +90,20 @@ class MoneyCalculatorTests: XCTestCase {
         XCTAssertEqual(five.hashValue, otherFive.hashValue)
         XCTAssertNotEqual(fixQ.hashValue, otherFive.hashValue)
     }
+
+    func testSimpleAdd5plus10() {
+        let ten = Euro(10)
+        let fifteen = ten.plus(five)
+        let expectedResult = Euro(15)
+        
+        XCTAssertEqual(fifteen, expectedResult)
+    }
     
+    func testSimpleAdd5plus7() {
+        let seven = Euro(7)
+        let twelve = seven.plus(five)
+        let expectedResult = Euro(12)
+        
+        XCTAssertEqual(twelve, expectedResult)
+    }
 }

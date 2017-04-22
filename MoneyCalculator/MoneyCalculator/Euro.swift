@@ -14,6 +14,10 @@ struct Euro {
     func times(_ times: Double) -> Euro {
         return Euro(self._amount * times)
     }
+    
+    func plus(_ sum: Euro) -> Euro {
+        return Euro(sum._amount + self._amount)
+    }
 }
 
 extension Euro : Equatable {
