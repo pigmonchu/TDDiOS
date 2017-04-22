@@ -1,6 +1,9 @@
 import Foundation
 
-struct Euro {
+struct Money {
+    
+    typealias Currency = String
+    
     let _amount: Double
     
     init(_ amount: Double) {
@@ -11,22 +14,22 @@ struct Euro {
         self.init(0)
     }
     
-    func times(_ times: Double) -> Euro {
-        return Euro(self._amount * times)
+    func times(_ times: Double) -> Money {
+        return Money(self._amount * times)
     }
     
-    func plus(_ sum: Euro) -> Euro {
-        return Euro(sum._amount + self._amount)
+    func plus(_ sum: Money) -> Money {
+        return Money(sum._amount + self._amount)
     }
 }
 
-extension Euro : Equatable {
-    public static func ==(lhs: Euro, rhs: Euro) -> Bool {
+extension Money : Equatable {
+    public static func ==(lhs: Money, rhs: Money) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
 }
 
-extension Euro : Hashable {
+extension Money : Hashable {
     public var hashValue: Int {
         get {
             let x = Double(round(100 * self._amount)/100)
