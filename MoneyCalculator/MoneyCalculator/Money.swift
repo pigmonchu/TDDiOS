@@ -21,6 +21,10 @@ struct Money {
     func plus(_ sum: Money) -> Money {
         return Money(sum._amount + self._amount)
     }
+    
+    func reduced(to currency: Currency, broker: Broker) -> Money {
+        return Money(self._amount)
+    }
 }
 
 extension Money : Equatable {
