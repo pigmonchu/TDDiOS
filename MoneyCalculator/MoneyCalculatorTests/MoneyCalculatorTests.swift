@@ -41,4 +41,34 @@ class MoneyCalculatorTests: XCTestCase {
         
         XCTAssertNotEqual(five, ten)
     }
+    
+    func testEqualityAfterMathOperations() {
+        let firstOperation = five.times(1/3)
+        let result = firstOperation.times(3)
+        
+        XCTAssertEqual(result, five)
+    }
+    
+    func testEqualityAfterDivisionByThree() {
+        let firstOperation = five.times(1/3)
+        let expectedResult = Euro(1.67)
+        
+        XCTAssertEqual(firstOperation, expectedResult)
+    }
+    
+    func testInequalityCalculatedQuantitiesAndFixQuantity() {
+        let fixQ = Euro(1.67)
+        
+        let firstOperation = five.times(1/3)
+        let secondOperation = five.times(3)
+
+        let fixQOperation = fixQ.times(3)
+
+        XCTAssertEqual(firstOperation, fixQ) // 1.6666666666666 == 1.67
+        XCTAssertNotEqual(secondOperation, fixQOperation) // 5 != 5.1
+        
+    }
+
+    
+
 }

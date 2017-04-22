@@ -18,7 +18,16 @@ struct Euro {
 
 extension Euro : Equatable {
     public static func ==(lhs: Euro, rhs: Euro) -> Bool {
-        return lhs._amount == rhs._amount
+        return lhs.hashValue == rhs.hashValue
     }
 }
 
+extension Euro : Hashable {
+    public var hashValue: Int {
+        get {
+            let x = Double(round(100 * self._amount)/100)
+            let s = Int(x*100)
+            return s
+        }
+    }
+}
