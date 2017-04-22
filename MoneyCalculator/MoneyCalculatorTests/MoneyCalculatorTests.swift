@@ -150,4 +150,5 @@ class MoneyCalculatorTests: XCTestCase {
         XCTAssertEqual(newCurrency._amount, 10)
     }
     
+    
 }

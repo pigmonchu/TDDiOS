@@ -17,15 +17,19 @@ struct Broker {
         self.addRate(from: "EUR", to: to, rate: rate)
     }
     
+    private func keyConversion(from: String, to:String) -> String {
+        return "\(from)->\(to)"
+    }
+    
     mutating func addRate(from: String, to: String, rate: Double) {
-        _rate["\(from)->\(to)"] = rate
-        _rate["\(to)->\(from)"] = 1/rate
-        _rate["\(from)->\(from)"] = 1
-        _rate["\(to)->\(to)"] = 1
+        _rate[keyConversion(from: from, to: to)] = rate
+        _rate[keyConversion(from: to, to: from)] = 1/rate
+        _rate[keyConversion(from: from, to: from)] = 1
+        _rate[keyConversion(from: to, to: to)] = 1
     }
     
     func rate(from: String, to: String) throws -> Double {
-        guard let rate = _rate["\(from)->\(to)"] else {
+        guard let rate = _rate[keyConversion(from: from, to: to)] else {
             throw BrokerErrors.unknownRate
         }
         return rate
