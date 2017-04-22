@@ -3,10 +3,10 @@ import Foundation
 struct Money {
     
     typealias Currency = String
-    
     let _amount: Double
     let _currency: Currency
     
+//MARK: - Initializers
     init(_ amount: Double, currency: Currency) {
         self._amount = amount
         self._currency = currency
@@ -18,6 +18,13 @@ struct Money {
     
     init () {
         self.init(0, currency: "EUR")
+    }
+
+//MARK: - Funcs
+    var description: String {
+        get {
+            return "\(_currency)\(_amount)"
+        }
     }
     
     func times(_ times: Double) -> Money {
@@ -35,9 +42,10 @@ struct Money {
     }
 }
 
+//MARK: - Protocols
 extension Money : Equatable {
     public static func ==(lhs: Money, rhs: Money) -> Bool {
-        return lhs.hashValue == rhs.hashValue
+        return lhs.hashValue == rhs.hashValue && lhs._currency == rhs._currency
     }
 }
 

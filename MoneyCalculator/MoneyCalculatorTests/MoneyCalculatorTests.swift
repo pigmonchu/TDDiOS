@@ -124,31 +124,37 @@ class MoneyCalculatorTests: XCTestCase {
         let broker = Broker()
         
         XCTAssertNotNil(broker)
-        XCTAssertEqual(broker._rate["EUR->EUR"], 1.0)
+        XCTAssertEqual(try! broker.rate(from: "EUR", to: "EUR"), 1.0)
 
     }
     
-    func testAddConversionFactorToBrokerEuroToDolar() {
-        // https://es.wikipedia.org/wiki/ISO_4217 -> La clave de divisa será según este ISO
+    func testAddConversionFactorToBrokerEuroToUSDar() {
+        // https://es.wikipedia.org/wiki/ISO_4217 ", to: " La clave de divisa será según este ISO
         
         var broker = Broker()
-        broker.addRate(from: "EUR", to: "DOL", rate: 2.0)
+        broker.addRate(from: "EUR", to: "USD", rate: 2.0)
         
-        XCTAssertEqual(broker._rate["EUR->DOL"], 2.0)
-        XCTAssertEqual(broker._rate["DOL->EUR"], 0.5)
-        XCTAssertEqual(broker._rate["DOL->DOL"], 1.0)
-        XCTAssertEqual(broker._rate["EUR->EUR"], 1.0)
+        XCTAssertEqual(try! broker.rate(from: "EUR", to: "USD"), 2.0)
+        XCTAssertEqual(try! broker.rate(from: "USD", to: "EUR"), 0.5)
+        XCTAssertEqual(try! broker.rate(from: "USD", to: "USD"), 1.0)
+        XCTAssertEqual(try! broker.rate(from: "EUR", to: "EUR"), 1.0)
         
     }
     
-    func testConversionEuroToDolar() {
+    func testConversionEuroToUSDar() {
         let five = Money(5)
-        let broker = Broker(to: "DOL", rate: 2.0)
-        let newCurrency = five.reduced(to: "DOL", broker: broker)
+        let broker = Broker(to: "USD", rate: 2.0)
+        let newCurrency = five.reduced(to: "USD", broker: broker)
         
-        XCTAssertEqual(broker._rate["EUR->DOL"], 2.0)
-        XCTAssertEqual(newCurrency._amount, 10)
+        XCTAssertEqual(try! broker.rate(from: "EUR", to: "USD"), 2.0)
+        XCTAssertEqual(newCurrency.description, "USD10.0")
     }
     
+    func testTenDollarsNotEqualTenEuros() {
+        let tenUSD = Money(10, currency: "USD")
+        let tenEUR = Money(10)
+        
+        XCTAssertNotEqual(tenUSD, tenEUR)
+    }
     
 }
