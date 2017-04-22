@@ -11,8 +11,8 @@ struct Euro {
         self.init(0)
     }
     
-    func times(_: Int) -> Euro {
-        return Euro(10)
+    func times(_ times: Double) -> Euro {
+        return Euro(self._amount * times)
     }
 }
 

@@ -22,7 +22,14 @@ class MoneyCalculatorTests: XCTestCase {
     
     func testSimpleMultiplication5x2() {
         let ten = five.times(2)
-        XCTAssertEqual(ten._amount, 10)
+        let tenFix = Euro(10)
+        XCTAssertEqual(ten, tenFix)
+    }
+    
+    func testSimpleMultiplication5x3() {
+        let fifteen = five.times(3)
+        let fifteenFix = Euro(15)
+        XCTAssertEqual(fifteen, fifteenFix)
     }
     
     func testEquality() {
