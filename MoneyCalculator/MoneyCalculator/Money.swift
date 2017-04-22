@@ -5,13 +5,19 @@ struct Money {
     typealias Currency = String
     
     let _amount: Double
+    let _currency: Currency
+    
+    init(_ amount: Double, currency: Currency) {
+        self._amount = amount
+        self._currency = currency
+    }
     
     init(_ amount: Double) {
-        self._amount = amount
+        self.init(amount, currency: "EUR")
     }
     
     init () {
-        self.init(0)
+        self.init(0, currency: "EUR")
     }
     
     func times(_ times: Double) -> Money {
@@ -23,7 +29,9 @@ struct Money {
     }
     
     func reduced(to currency: Currency, broker: Broker) -> Money {
-        return Money(self._amount)
+        let rate = try! broker.rate(from: _currency, to: currency)
+        
+        return Money(self._amount * rate, currency: currency)
     }
 }
 

@@ -141,4 +141,13 @@ class MoneyCalculatorTests: XCTestCase {
         
     }
     
+    func testConversionEuroToDolar() {
+        let five = Money(5)
+        let broker = Broker(to: "DOL", rate: 2.0)
+        let newCurrency = five.reduced(to: "DOL", broker: broker)
+        
+        XCTAssertEqual(broker._rate["EUR->DOL"], 2.0)
+        XCTAssertEqual(newCurrency._amount, 10)
+    }
+    
 }
