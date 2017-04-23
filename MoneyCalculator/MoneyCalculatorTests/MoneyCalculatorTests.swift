@@ -1,7 +1,7 @@
 import XCTest
 @testable import MoneyCalculator
 
-class MoneyCalculatorTests: XCTestCase {
+class BillCalculatorTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -14,28 +14,28 @@ class MoneyCalculatorTests: XCTestCase {
         super.tearDown()
     }
     
-    func testCanCreateMoney() {
-        XCTAssertNotNil(Money())
+    func testCanCreateBill() {
+        XCTAssertNotNil(Bill())
     }
     
     func testSimpleMultiplication5x2() {
-        let five = Money(5)
+        let five = Bill(5)
         let ten = five.times(2)
-        let tenFix = Money(10)
+        let tenFix = Bill(10)
         XCTAssertEqual(ten, tenFix)
     }
     
     func testSimpleMultiplication5x3() {
-        let five = Money(5)
+        let five = Bill(5)
         let fifteen = five.times(3)
-        let fifteenFix = Money(15)
+        let fifteenFix = Bill(15)
         XCTAssertEqual(fifteen, fifteenFix)
     }
     
     func testEquality() {
-        let five = Money(5)
-        let otherFive = Money(5)
-        let ten = Money(10)
+        let five = Bill(5)
+        let otherFive = Bill(5)
+        let ten = Bill(10)
         
         XCTAssertEqual(otherFive, otherFive)
         XCTAssertEqual(five, otherFive)
@@ -44,7 +44,7 @@ class MoneyCalculatorTests: XCTestCase {
     }
     
     func testEqualityAfterMathOperations() {
-        let five = Money(5)
+        let five = Bill(5)
         let firstOperation = five.times(1/3)
         let result = firstOperation.times(3)
         
@@ -52,16 +52,16 @@ class MoneyCalculatorTests: XCTestCase {
     }
     
     func testEqualityAfterDivisionByThree() {
-        let five = Money(5)
+        let five = Bill(5)
         let firstOperation = five.times(1/3)
-        let expectedResult = Money(1.67)
+        let expectedResult = Bill(1.67)
         
         XCTAssertEqual(firstOperation, expectedResult)
     }
     
     func testInequalityCalculatedQuantitiesAndFixQuantity() {
-        let five = Money(5)
-        let fixQ = Money(1.67)
+        let five = Bill(5)
+        let fixQ = Bill(1.67)
         
         let firstOperation = five.times(1/3)
         let secondOperation = five.times(3)
@@ -74,8 +74,8 @@ class MoneyCalculatorTests: XCTestCase {
 
     func testThatObjectWithEqualHashAreEqual() {
 //Es el mismo test que arriba, pero lo mantengo por si cambio la implementación que pete
-        let five = Money(5)
-        let fixQ = Money(1.67)
+        let five = Bill(5)
+        let fixQ = Bill(1.67)
         
         let firstOperation = five.times(1/3)
         let secondOperation = five.times(3)
@@ -87,34 +87,34 @@ class MoneyCalculatorTests: XCTestCase {
     }
 
     func testThatHashValueIsWellFormed() {
-        let five = Money(5)
-        let fixQ = Money(50)
-        let otherFive = Money(5)
+        let five = Bill(5)
+        let fixQ = Bill(50)
+        let otherFive = Bill(5)
         
         XCTAssertEqual(five.hashValue, otherFive.hashValue)
         XCTAssertNotEqual(fixQ.hashValue, otherFive.hashValue)
     }
 
     func testSimpleAdd5plus10() {
-        let five = Money(5)
-        let ten = Money(10)
+        let five = Bill(5)
+        let ten = Bill(10)
         let fifteen = ten.plus(five)
-        let expectedResult = Money(15)
+        let expectedResult = Bill(15)
         
         XCTAssertEqual(fifteen, expectedResult)
     }
     
     func testSimpleAdd5plus7() {
-        let five = Money(5)
-        let seven = Money(7)
+        let five = Bill(5)
+        let seven = Bill(7)
         let twelve = seven.plus(five)
-        let expectedResult = Money(12)
+        let expectedResult = Bill(12)
         
         XCTAssertEqual(twelve, expectedResult)
     }
     
     func testConversionEuroToEuro() {
-        let five = Money(5)
+        let five = Bill(5)
         let newCurrency = five.reduced(to: "EUR", broker: Broker())
         
         XCTAssertEqual(newCurrency, five)        
@@ -142,7 +142,7 @@ class MoneyCalculatorTests: XCTestCase {
     }
     
     func testConversionEuroToUSDar() {
-        let five = Money(5)
+        let five = Bill(5)
         let broker = Broker(to: "USD", rate: 2.0)
         let newCurrency = five.reduced(to: "USD", broker: broker)
         
@@ -151,8 +151,8 @@ class MoneyCalculatorTests: XCTestCase {
     }
     
     func testTenDollarsNotEqualTenEuros() {
-        let tenUSD = Money(10, currency: "USD")
-        let tenEUR = Money(10)
+        let tenUSD = Bill(10, currency: "USD")
+        let tenEUR = Bill(10)
         
         XCTAssertNotEqual(tenUSD, tenEUR)
     }

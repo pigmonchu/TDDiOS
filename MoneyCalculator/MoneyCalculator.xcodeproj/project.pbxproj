@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		465F873E1EAB1DD100C18E38 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465F873D1EAB1DD100C18E38 /* Money.swift */; };
+		465F873E1EAB1DD100C18E38 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465F873D1EAB1DD100C18E38 /* Bill.swift */; };
 		465F87401EABCAF000C18E38 /* Broker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465F873F1EABCAF000C18E38 /* Broker.swift */; };
+		465F87421EACFA6400C18E38 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465F87411EACFA6400C18E38 /* Money.swift */; };
 		469A1CBD1EA68FD400616528 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A1CBC1EA68FD400616528 /* AppDelegate.swift */; };
 		469A1CBF1EA68FD400616528 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A1CBE1EA68FD400616528 /* ViewController.swift */; };
 		469A1CC21EA68FD400616528 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 469A1CC01EA68FD400616528 /* Main.storyboard */; };
@@ -28,8 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		465F873D1EAB1DD100C18E38 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
+		465F873D1EAB1DD100C18E38 /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		465F873F1EABCAF000C18E38 /* Broker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Broker.swift; sourceTree = "<group>"; };
+		465F87411EACFA6400C18E38 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		469A1CB91EA68FD300616528 /* MoneyCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		469A1CBC1EA68FD400616528 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		469A1CBE1EA68FD400616528 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,8 +65,9 @@
 		465F873C1EAB1DBB00C18E38 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				465F873D1EAB1DD100C18E38 /* Money.swift */,
+				465F873D1EAB1DD100C18E38 /* Bill.swift */,
 				465F873F1EABCAF000C18E38 /* Broker.swift */,
+				465F87411EACFA6400C18E38 /* Money.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -216,9 +219,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				465F87401EABCAF000C18E38 /* Broker.swift in Sources */,
+				465F87421EACFA6400C18E38 /* Money.swift in Sources */,
 				469A1CBF1EA68FD400616528 /* ViewController.swift in Sources */,
 				469A1CBD1EA68FD400616528 /* AppDelegate.swift in Sources */,
-				465F873E1EAB1DD100C18E38 /* Money.swift in Sources */,
+				465F873E1EAB1DD100C18E38 /* Bill.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
