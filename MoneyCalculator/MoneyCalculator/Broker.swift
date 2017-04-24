@@ -4,7 +4,22 @@ enum BrokerErrors: Error {
     case unknownRate
 }
 
-struct Broker {
+typealias RatesDictionary = [Currency : Rate]
+typealias Rate = Double
+
+protocol Rater {
+    func rate(from: Currency, to: Currency) throws -> Rate
+}
+
+extension Rater {
+    func rate(from: Currency, to: Currency) throws -> Rate {
+        return 1.0
+    }
+}
+
+struct UnityBroker: Rater {}
+
+struct Broker: Rater {
     var _rate: [String : Double]
     
     init() {
@@ -34,5 +49,4 @@ struct Broker {
         }
         return rate
     }
-    
 }

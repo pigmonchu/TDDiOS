@@ -153,8 +153,49 @@ class WadCalculatorTests: XCTestCase {
     func testTenDollarsNotEqualTenEuros() {
         let tenUSD = Wad(10, currency: "USD")
         let tenEUR = Wad(10)
-        
+
         XCTAssertNotEqual(tenUSD, tenEUR)
+    }
+    
+    func testEqualityWads() {
+        let emptyWad = Wad()
+        let singleBillWad = Wad(42, currency: "USD")
+        
+        //Identity
+        XCTAssertEqual(emptyWad, emptyWad)
+        XCTAssertEqual(singleBillWad, singleBillWad)
+        XCTAssertNotEqual(singleBillWad, emptyWad)
+        
+        //Equivalence
+        let tenEuros = Wad(10)
+        let tenDollars = Wad(10, currency: "USD")
+        
+        let fiftyEuros = Wad(50)
+        let fiftyDollars = Wad(50, currency: "USD")
+        let fifty1 = Wad(10).plus(tenEuros).plus(tenDollars).plus(tenEuros).plus(tenDollars)
+        let fifty2 = Wad(30, currency: "USD").plus(tenEuros).plus(tenDollars)
+        
+        XCTAssertEqual(fiftyEuros, fiftyDollars)
+        XCTAssertEqual(fiftyEuros, fifty1)
+        XCTAssertEqual(fiftyEuros, fifty2)
+        XCTAssertEqual(fiftyDollars, fiftyDollars)
+        XCTAssertEqual(fiftyDollars, fifty1)
+        XCTAssertEqual(fiftyDollars, fifty2)
+        XCTAssertEqual(fifty1, fifty2)
+    }
+    
+    func testSimpleAdditionWad() {
+        let singleBillWad = Wad(42, currency: "USD")
+        
+        XCTAssertEqual(singleBillWad.plus(Wad(8, currency: "USD")), Wad(50, currency: "USD"))
+    }
+    
+    func testSimpleMultiplication() {
+        let singleBillWad = Wad(42, currency: "USD")
+
+        let eightyFour = singleBillWad.times(2)
+        XCTAssertEqual(eightyFour, Wad(84, currency: "USD"))
+        
     }
     
 }

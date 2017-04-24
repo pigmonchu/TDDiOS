@@ -29,7 +29,10 @@ No obstante esto me llevó a refactorizar el for del HashValue a un reduce.
 
 ## Commit 15: Tests verdes de chiripa.
 
-Dejo sólo el test `testTenDollarsNotEqualTenEuros()` en rojo ya que es indicativo de que se necesita un BrokerUnity y prefiero no hacer todas esas modificaciones sin dejar rastro.
+Dejo sólo el test `testTenDollarsNotEqualTenEuros()` en rojo ya que es indicativo de que se necesita un UnityBroker y prefiero no hacer todas esas modificaciones sin dejar rastro.
 
+## Commit 16: Simple tests del ejercicio en Verde
+
+El test de igualdad de Wad del ejercicio con cambio 1:1 y los de simpleAdd y simpleMultiplication están en verde, sin embargo mi test de desigualdad 10€ vs 10$ sigue en rojo. Dado que las sumas y multiplicaciones ya las pasa (aunque sea de chiripa) me queda trabajar los cambios reales y UnityBroker (que no me queda muy claro como usar)
 
 
