@@ -6,7 +6,7 @@ protocol Money {
     
     init(_ amount: Double, currency: Currency)
     
-    func times(_ times: Double) -> Self
+    mutating func times(_ times: Double) -> Self
 
     func plus(_ sum: Self) -> Self
 
