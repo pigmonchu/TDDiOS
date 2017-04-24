@@ -1,5 +1,7 @@
 # Practica TDD iOS. IV Bootcamp Mobile KC
 
+## Commit 14: Tests Wad Verdes de chiripa y refactorización Wad. Faltan dos tests
+
 El paso a verde de todos los test de Wad me ha llevado a muchos cambios que no he ido reflejando en diferentes push. Los reflejo aquí:
 
 ### Tests de creación de Wad
@@ -23,6 +25,11 @@ Empezó como un bucle for, pero no me hizo falta refactorizarlo ni a map, ni a r
 
 No obstante esto me llevó a refactorizar el for del HashValue a un reduce.
 
-
 **A falta de dos tests a verde, hice el primer commit de tests verdes de chiripa**
+
+## Commit 15: Tests verdes de chiripa.
+
+Dejo sólo el test `testTenDollarsNotEqualTenEuros()` en rojo ya que es indicativo de que se necesita un BrokerUnity y prefiero no hacer todas esas modificaciones sin dejar rastro.
+
+
 

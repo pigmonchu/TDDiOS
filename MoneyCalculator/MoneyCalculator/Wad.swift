@@ -60,7 +60,13 @@ extension Wad : Money {
     }
     
     func reduced(to currency: Currency, broker: Broker) -> Wad {
-        return self
+        var result = Wad()
+        
+        result._bills = self._bills.map {
+            $0.reduced(to: currency, broker: broker)
+        }
+        
+        return result
     }
     
     var description: String {
