@@ -1,27 +1,9 @@
 import Foundation
 
-enum BrokerErrors: Error {
-    case unknownRate
-}
-
-typealias RatesDictionary = [Currency : Rate]
-typealias Rate = Double
-
-protocol Rater {
-    func rate(from: Currency, to: Currency) throws -> Rate
-}
-
-extension Rater {
-    func rate(from: Currency, to: Currency) throws -> Rate {
-        return 1.0
-    }
-}
-
-struct UnityBroker: Rater {}
-
 struct Broker: Rater {
     var _rate: [String : Double]
     
+//MARK: - Initializers
     init() {
         _rate = [:]
         self.addRate(from: "EUR", to: "EUR", rate: 1.0)
@@ -32,6 +14,7 @@ struct Broker: Rater {
         self.addRate(from: "EUR", to: to, rate: rate)
     }
     
+//MARK: - func
     private func keyConversion(from: String, to:String) -> String {
         return "\(from)->\(to)"
     }

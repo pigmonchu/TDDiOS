@@ -33,6 +33,28 @@ Dejo sólo el test `testTenDollarsNotEqualTenEuros()` en rojo ya que es indicati
 
 ## Commit 16: Simple tests del ejercicio en Verde
 
-El test de igualdad de Wad del ejercicio con cambio 1:1 y los de simpleAdd y simpleMultiplication están en verde, sin embargo mi test de desigualdad 10€ vs 10$ sigue en rojo. Dado que las sumas y multiplicaciones ya las pasa (aunque sea de chiripa) me queda trabajar los cambios reales y UnityBroker (que no me queda muy claro como usar)
+El test de igualdad de Wad del ejercicio con cambio 1:1 y los de simpleAdd y simpleMultiplication están en verde, sin embargo mi test de desigualdad 10EUR vs 10USD sigue en rojo. Dado que las sumas y multiplicaciones ya las pasa (aunque sea de chiripa) me queda trabajar los cambios reales y UnityBroker (que no me queda muy claro como usar)
 
+## Commit 17 y siguientes: UnityBroker
+
+Le he estado dando vueltas a UnityBroker y qué papel juega y como no me queda muy claro voy a ver que sale. Mi problema es la igualdad de fajos. Los billetes están claros, cualesquiera billetes cuyas unidades fraccionarias y divisa coincidan, son iguales. Esto implica que 10USD es distinto de 5EUR aún cuando el tipo de cambio sea 2USD:1EUR. Es algo así como los billetes en un monedero: tener un billete de 10USD en Estados Unidos no es lo mismo que tener un billete de 5EUR (este último es una curiosidad o un problema, pero no sirve para pagar nada).
+
+Con el tema de los fajos (Wad) la cosa cambia. Dado que permitimos que un fajo contenga billetes de diferentes divisas y que estamos creando un sistema _Forex_, su valor debe determinarse convirtiéndolas todas ellas en una unidad. A esta unidad le voy a llamar patrón y la va a fijar UnityBroker.
+
+Esto me lleva a otra cosa, yo puedo crear un billete de 30 Monopolys y no debería pasar nada, pero de cara a los Wads, debería permitirme incluirlos pero que no afectara al valor final del fajo, es decir, si una unidad no es reconocida por UnityBroker su valor en un Wad es 0 unidades patron.
+
+En definitiva UnityBroker tiene las funciones de determinar 
+
+1. Que billetes son _legales_
+2. 	El tipo de cambio entre ellos
+
+Como son dos funciones prefiero crear dos objetos. Uno que será la autoridad de cambio `ChangeAuthority` y otro que será realmente el broker de conversión a divisa patrón `UnityBroker`.
+
+Además UnityBroker debiera formar parte de Wad, es decir, Wad debería estar compuesto de Bills y tener un UnityBroker. Entiendo que este UnityBroker debiera ser estático (el mismo para todas las instancias), que iría informando las distintas divisas alimentandose del ChangeAuthority.
+
+Las tareas para pasar el test 10EUR != 10USD son entonces:
+
+- Creación de un protocolo `Rater` (Ya está hecho)
+- Creación de un objeto ChangeAuthority, aquí como un Mock que sustituya la consulta real
+- Creación de un objeto UnityBroker e integración el Wad de forma estática. A la hora de calcular HashValue de Wad UnityBroker determinará el número total de unidad fraccionaria de la divisa patrón. Si no conoce la unidad a convertir la pedirá a ChangeAuthority, y si es desconocida su valor será nulo.
 

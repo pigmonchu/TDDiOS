@@ -1,7 +1,7 @@
 import XCTest
 @testable import MoneyCalculator
 
-class WadCalculatorTests: XCTestCase {
+class WAdCalculatorTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -14,7 +14,7 @@ class WadCalculatorTests: XCTestCase {
         super.tearDown()
     }
     
-    func testCanCreateWad() {
+     func testCanCreateWad() {
         XCTAssertNotNil(Wad())
     }
     
@@ -150,13 +150,6 @@ class WadCalculatorTests: XCTestCase {
         XCTAssertEqual(newCurrency.description, "USD10.0")
     }
     
-    func testTenDollarsNotEqualTenEuros() {
-        let tenUSD = Wad(10, currency: "USD")
-        let tenEUR = Wad(10)
-
-        XCTAssertNotEqual(tenUSD, tenEUR)
-    }
-    
     func testEqualityWads() {
         let emptyWad = Wad()
         let singleBillWad = Wad(42, currency: "USD")
@@ -198,4 +191,17 @@ class WadCalculatorTests: XCTestCase {
         
     }
     
+    func testTenDollarsNotEqualTenEuros() {
+        let tenUSD = Wad(10, currency: "USD")
+        let tenEUR = Wad(10)
+        
+        XCTAssertNotEqual(tenUSD, tenEUR)
+    }
+    
+    //Tests Divisas autorizadas y no autorizadas
+    
+    func testWadTenMonopolysNotCreate() {
+        
+    }
 }
+

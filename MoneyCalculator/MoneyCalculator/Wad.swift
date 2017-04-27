@@ -4,6 +4,9 @@ typealias Bills = [Bill]
 
 struct Wad {
     var _bills : Bills
+    static let unityBroker = Broker()
+    
+    //ver la posibilidad de implementar en Wad el protocolo Broker
 }
 
 extension Wad : Money {
@@ -31,14 +34,6 @@ extension Wad : Money {
     
     mutating func addBill(_ amount: Double) {
         _bills.append(Bill(amount))
-    }
-    
-    mutating func addBill() {
-        _bills.append(Bill())
-    }
-    
-    mutating func addBill(_ bill: Bill) {
-        _bills.append(bill)
     }
     
     func times(_ times: Double) -> Wad {
@@ -69,6 +64,10 @@ extension Wad : Money {
         return result
     }
     
+    func reduced(to: Currency) -> Wad {
+        return reduced(to: to, broker: Wad.unityBroker)
+    }
+    
     var description: String {
         get {
             var dsc: String = ""
@@ -85,6 +84,12 @@ extension Wad : Money {
             }
             return dsc
         }
+    }
+}
+
+extension Wad: Rater {
+    func rate(from: Currency, to: Currency) throws -> Rate {
+        return try Wad.unityBroker.rate(from: from, to: to)
     }
 }
 
