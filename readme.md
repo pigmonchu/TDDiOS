@@ -68,4 +68,7 @@ Cambio el tesd de igualdad de Wad para el nuevo tipo de cambio determinado por A
 
 Finalmente la solución que he encontrado para que pase esos dos tests es transformar AuthorityChange en un protocolo, forzar que Money no pida Broker para la funcion reduced sino cualquier objeto que cumpla el protocolo Rater. Así ahora UnityBroker cumplirá ambos protocolos Rater (servirá para cambios en protocolo Money) y ChangeAuthority (establece los tipos de cambio). Tengo la sensación de que me he complicado la vida, pero no se me ocurre de otra forma.
 
-Esto ha llevado a reescribir todos los tests de BrokerUnity... Y aquí es donde creo que no he hecho TDD, para poder convertir entre divisas el código que se me ha ocurrido ha implicado cambios profundos y al final he tenido 
+Esto ha llevado a reescribir todos los tests de BrokerUnity... Y aquí es donde creo que no he hecho TDD, para poder convertir entre divisas el código que se me ha ocurrido ha implicado cambios profundos y al final he tenido que cambiar 4 tests que pasaba para un objeto que ya no existe. No sé si los tests han dirigido el desarrollo, o el diseño de mi cabeza ha dirigido los test...¿?
+
+# Conclusión y entrega
+La faena ahora sería pensar como utilizar Interactors y managers para poder incluir una api de tasas de intercambio (por ejemplo http://fixer.io/). Y después construir una app con su pantalla y botones para que se pueda utilizar desde el móvil. Pero esto es más bien una tarea SOME DAY MAYBE
