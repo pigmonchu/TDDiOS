@@ -19,5 +19,11 @@ class UnityBrokerTests: XCTestCase {
         XCTAssertNotNil(ChangeAuthority())
     }
     
+    func testEURPatronIsOne() {
+        let changeAuthority = ChangeAuthority()
+        
+        XCTAssertEqual(changeAuthority.value("EUR"), 1.0)
+    }
+    
 
 }
