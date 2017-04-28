@@ -58,3 +58,5 @@ Las tareas para pasar el test 10EUR != 10USD son entonces:
 - Creación de un objeto ChangeAuthority, aquí como un Mock que sustituya la consulta real
 - Creación de un objeto UnityBroker e integración el Wad de forma estática. A la hora de calcular HashValue de Wad UnityBroker determinará el número total de unidad fraccionaria de la divisa patrón. Si no conoce la unidad a convertir la pedirá a ChangeAuthority, y si es desconocida su valor será nulo.
 
+## Commit 22
+Como quiero reducir la funcionalidad de la autoridad de cambio al mínimo pero participa del protocolo Rater, provoco el error si se invoca `rate(from: to:)`

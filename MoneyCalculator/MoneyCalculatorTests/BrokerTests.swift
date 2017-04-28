@@ -36,4 +36,8 @@ class UnityBrokerTests: XCTestCase {
         XCTAssertEqual(changeAuthority.value("EUR"), 1.0)
         XCTAssertEqual(changeAuthority.value("Monopoly"), 0.0)
     }
+
+    func testChangeAuthorityDontConvertCurrencys() {
+        XCTAssertThrowsError(try changeAuthority.rate(from: "USD", to: "EUR"))
+    }
 }

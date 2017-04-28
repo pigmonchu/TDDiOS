@@ -2,6 +2,7 @@ import Foundation
 
 enum BrokerErrors: Error {
     case unknownRate
+    case unavailableFunction
 }
 
 typealias RatesDictionary = [Currency : Rate]

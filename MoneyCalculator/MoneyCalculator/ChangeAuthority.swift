@@ -9,6 +9,9 @@ struct ChangeAuthority: Rater {
         }
         return result
     }
-    
+
+    func rate(from: Currency, to: Currency) throws -> Rate {
+        throw BrokerErrors.unavailableFunction
+    }
     
 }
