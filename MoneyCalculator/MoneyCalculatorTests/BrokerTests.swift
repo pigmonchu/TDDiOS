@@ -1,7 +1,7 @@
 import XCTest
 @testable import MoneyCalculator
 
-class UnityBrokerCalculatorTests: XCTestCase {
+class UnityBrokerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -14,5 +14,10 @@ class UnityBrokerCalculatorTests: XCTestCase {
         super.tearDown()
 
     }
+    
+    func testCanCreateChangeAuthority() {        
+        XCTAssertNotNil(ChangeAuthority())
+    }
+    
 
 }

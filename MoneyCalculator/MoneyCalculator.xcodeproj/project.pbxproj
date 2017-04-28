@@ -19,8 +19,7 @@
 		469A1CC41EA68FD400616528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 469A1CC31EA68FD400616528 /* Assets.xcassets */; };
 		469A1CC71EA68FD400616528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 469A1CC51EA68FD400616528 /* LaunchScreen.storyboard */; };
 		469A1CD21EA68FD400616528 /* MoneyCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A1CD11EA68FD400616528 /* MoneyCalculatorTests.swift */; };
-		46A059241EB11B520004263E /* ChangeAuthorityManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A059231EB11B520004263E /* ChangeAuthorityManagerMock.swift */; };
-		46A059271EB14C460004263E /* ChangeAuthorityInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A059261EB14C460004263E /* ChangeAuthorityInteractor.swift */; };
+		46A059241EB11B520004263E /* ChangeAuthority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A059231EB11B520004263E /* ChangeAuthority.swift */; };
 		46AB7A231EB2645100779DEB /* Rater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB7A221EB2645100779DEB /* Rater.swift */; };
 		46AB7A251EB2653000779DEB /* UnityBroker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB7A241EB2653000779DEB /* UnityBroker.swift */; };
 /* End PBXBuildFile section */
@@ -52,8 +51,7 @@
 		469A1CCD1EA68FD400616528 /* MoneyCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		469A1CD11EA68FD400616528 /* MoneyCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyCalculatorTests.swift; sourceTree = "<group>"; };
 		469A1CD31EA68FD400616528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46A059231EB11B520004263E /* ChangeAuthorityManagerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeAuthorityManagerMock.swift; sourceTree = "<group>"; };
-		46A059261EB14C460004263E /* ChangeAuthorityInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeAuthorityInteractor.swift; sourceTree = "<group>"; };
+		46A059231EB11B520004263E /* ChangeAuthority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeAuthority.swift; sourceTree = "<group>"; };
 		46AB7A221EB2645100779DEB /* Rater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rater.swift; sourceTree = "<group>"; };
 		46AB7A241EB2653000779DEB /* UnityBroker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnityBroker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				46AB7A261EB2655300779DEB /* Protocols */,
+				46A059231EB11B520004263E /* ChangeAuthority.swift */,
 				465F873D1EAB1DD100C18E38 /* Bill.swift */,
 				465F87451EACFCF200C18E38 /* Wad.swift */,
 				465F873F1EABCAF000C18E38 /* Broker.swift */,
@@ -109,8 +108,6 @@
 		469A1CBB1EA68FD300616528 /* MoneyCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				46A059251EB14C240004263E /* Interactors */,
-				46A059221EB11B380004263E /* Managers */,
 				465F873C1EAB1DBB00C18E38 /* Models */,
 				469A1CBC1EA68FD400616528 /* AppDelegate.swift */,
 				469A1CBE1EA68FD400616528 /* ViewController.swift */,
@@ -131,22 +128,6 @@
 				469A1CD31EA68FD400616528 /* Info.plist */,
 			);
 			path = MoneyCalculatorTests;
-			sourceTree = "<group>";
-		};
-		46A059221EB11B380004263E /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				46A059231EB11B520004263E /* ChangeAuthorityManagerMock.swift */,
-			);
-			name = Managers;
-			sourceTree = "<group>";
-		};
-		46A059251EB14C240004263E /* Interactors */ = {
-			isa = PBXGroup;
-			children = (
-				46A059261EB14C460004263E /* ChangeAuthorityInteractor.swift */,
-			);
-			name = Interactors;
 			sourceTree = "<group>";
 		};
 		46AB7A261EB2655300779DEB /* Protocols */ = {
@@ -265,10 +246,9 @@
 			files = (
 				465F87461EACFCF200C18E38 /* Wad.swift in Sources */,
 				465F87401EABCAF000C18E38 /* Broker.swift in Sources */,
-				46A059241EB11B520004263E /* ChangeAuthorityManagerMock.swift in Sources */,
+				46A059241EB11B520004263E /* ChangeAuthority.swift in Sources */,
 				465F87421EACFA6400C18E38 /* Money.swift in Sources */,
 				46AB7A251EB2653000779DEB /* UnityBroker.swift in Sources */,
-				46A059271EB14C460004263E /* ChangeAuthorityInteractor.swift in Sources */,
 				469A1CBF1EA68FD400616528 /* ViewController.swift in Sources */,
 				469A1CBD1EA68FD400616528 /* AppDelegate.swift in Sources */,
 				46AB7A231EB2645100779DEB /* Rater.swift in Sources */,
