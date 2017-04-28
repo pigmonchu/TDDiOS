@@ -4,7 +4,7 @@ typealias Bills = [Bill]
 
 struct Wad {
     var _bills : Bills
-    static let unityBroker = Broker()
+    static let unityBroker = UnityBroker(pattern: "EUR", ratesRespectPattern: ["EUR" : 1.0, "USD" : 2])
     
     //ver la posibilidad de implementar en Wad el protocolo Broker
 }
@@ -54,7 +54,7 @@ extension Wad : Money {
         return result
     }
     
-    func reduced(to currency: Currency, broker: Broker) -> Wad {
+    func reduced<T: Rater>(to currency: Currency, broker: T) -> Wad {
         var result = Wad()
         
         result._bills = self._bills.map {
@@ -103,8 +103,8 @@ extension Wad : Equatable {
 extension Wad : Hashable {
     public var hashValue: Int {
         get {
-            let accum = self._bills.reduce ( 0, {x, y in
-                x + Double(round(100 * y._amount)/100)
+            let accum = self._bills.reduce ( 0.0, {x, y in
+                x + Double(round(100 * y.reduced(to: "EUR", broker: Wad.unityBroker)._amount)/100)
             })
             
             return Int(accum * 100)

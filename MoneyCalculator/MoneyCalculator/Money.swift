@@ -10,5 +10,5 @@ protocol Money {
 
     func plus(_ sum: Self) -> Self
 
-    func reduced(to currency: Currency, broker: Broker) -> Self
+    func reduced<T: Rater>(to currency: Currency, broker: T) -> Self
 }

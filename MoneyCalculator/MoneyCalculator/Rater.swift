@@ -18,3 +18,12 @@ extension Rater {
     }
 }
 
+protocol ChangeAuthority {
+    
+    var pattern: Currency { get }
+    func patternTo(currency: Currency) -> Rate
+    func currencyToPattern(_ currency: Currency) -> Rate
+    func value(OfCurrency currency: Currency) -> Rate?
+    
+}
+

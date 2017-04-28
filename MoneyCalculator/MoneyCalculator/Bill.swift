@@ -27,14 +27,15 @@ struct Bill : Money {
     }
     
     func times(_ times: Double) -> Bill {
-        return Bill(self._amount * times)
+        return Bill(self._amount * times, currency: self._currency)
+
     }
     
     func plus(_ sum: Bill) -> Bill {
         return Bill(sum._amount + self._amount)
     }
     
-    func reduced(to currency: Currency, broker: Broker) -> Bill {
+    func reduced<T: Rater>(to currency: Currency, broker: T) -> Bill {
         let rate = try! broker.rate(from: _currency, to: currency)
         
         return Bill(self._amount * rate, currency: currency)

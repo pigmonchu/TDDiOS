@@ -161,21 +161,21 @@ class WAdCalculatorTests: XCTestCase {
         
         //Equivalence
         let tenEuros = Wad(10)
-        let tenDollars = Wad(10, currency: "USD")
+        let twentyDollars = Wad(20, currency: "USD")
         
         let fiftyEuros = Wad(50)
-        let fiftyDollars = Wad(50, currency: "USD")
-        let fifty1 = Wad(10).plus(tenEuros).plus(tenDollars).plus(tenEuros).plus(tenDollars)
-        let fifty2 = Wad(30, currency: "USD").plus(tenEuros).plus(tenDollars)
+        let oneHundredDollars = Wad(100, currency: "USD")
+        let fifty1 = Wad(10).plus(tenEuros).plus(twentyDollars).plus(tenEuros).plus(twentyDollars)
+        let fifty2 = Wad(60, currency: "USD").plus(tenEuros).plus(twentyDollars)
         
-        XCTAssertEqual(fiftyEuros, fiftyDollars)
+        XCTAssertEqual(fiftyEuros, oneHundredDollars)
         XCTAssertEqual(fiftyEuros, fifty1)
         XCTAssertEqual(fiftyEuros, fifty2)
-        XCTAssertEqual(fiftyDollars, fiftyDollars)
-        XCTAssertEqual(fiftyDollars, fifty1)
-        XCTAssertEqual(fiftyDollars, fifty2)
+        XCTAssertEqual(oneHundredDollars, oneHundredDollars)
+        XCTAssertEqual(oneHundredDollars, fifty1)
+        XCTAssertEqual(oneHundredDollars, fifty2)
         XCTAssertEqual(fifty1, fifty2)
-    }
+   }
     
     func testSimpleAdditionWad() {
         let singleBillWad = Wad(42, currency: "USD")

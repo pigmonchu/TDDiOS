@@ -59,4 +59,13 @@ Las tareas para pasar el test 10EUR != 10USD son entonces:
 - Creación de un objeto UnityBroker e integración el Wad de forma estática. A la hora de calcular HashValue de Wad UnityBroker determinará el número total de unidad fraccionaria de la divisa patrón. Si no conoce la unidad a convertir la pedirá a ChangeAuthority, y si es desconocida su valor será nulo.
 
 ## Commit 22
+
 Como quiero reducir la funcionalidad de la autoridad de cambio al mínimo pero participa del protocolo Rater, provoco el error si se invoca `rate(from: to:)`
+
+## Commit 23
+
+Cambio el tesd de igualdad de Wad para el nuevo tipo de cambio determinado por AuthorityChange. Ahora deben pasar esos dos test el de igualdad y el de desigualdad entre 10EUR y 10USD.
+
+Finalmente la solución que he encontrado para que pase esos dos tests es transformar AuthorityChange en un protocolo, forzar que Money no pida Broker para la funcion reduced sino cualquier objeto que cumpla el protocolo Rater. Así ahora UnityBroker cumplirá ambos protocolos Rater (servirá para cambios en protocolo Money) y ChangeAuthority (establece los tipos de cambio). Tengo la sensación de que me he complicado la vida, pero no se me ocurre de otra forma.
+
+Esto ha llevado a reescribir todos los tests de BrokerUnity... Y aquí es donde creo que no he hecho TDD, para poder convertir entre divisas el código que se me ha ocurrido ha implicado cambios profundos y al final he tenido 
