@@ -3,6 +3,8 @@ import XCTest
 
 class UnityBrokerTests: XCTestCase {
     
+    let changeAuthority = ChangeAuthority()
+    
     override func setUp() {
         super.setUp()
         
@@ -20,10 +22,13 @@ class UnityBrokerTests: XCTestCase {
     }
     
     func testEURPatronIsOne() {
-        let changeAuthority = ChangeAuthority()
         
         XCTAssertEqual(changeAuthority.value("EUR"), 1.0)
     }
     
-
+    func testUSDPatronIsNotEqualOne() {
+        XCTAssertEqual(changeAuthority.value("EUR"), 1.0)
+        XCTAssertNotEqual(changeAuthority.value("USD"), 1.0)
+        
+    }
 }

@@ -1,7 +1,11 @@
 import Foundation
 
-struct ChangeAuthority {
+struct ChangeAuthority: Rater {
+    var ratesRespectPattern: RatesDictionary = ["EUR" : 1.0, "USD" : 2.0]
+    
     func value(_ currency: Currency) -> Rate {
-        return 1.0
+        return ratesRespectPattern[currency]!
     }
+    
+    
 }
